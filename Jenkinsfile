@@ -1,3 +1,11 @@
+pipeline {
+  agent{
+    docker {
+
+    }
+  }
+}
+
 node {
   stage('Checkout') {
       //disable to recycle workspace data to save time/bandwidth
@@ -18,27 +26,39 @@ node {
 
   stage('Test') {
       withEnv(["CHROME_BIN=/usr/bin/chromium-browser"]) {
-        sh 'ng test --progress=false --watch false'
+        sh 'npm run test --progress=false --watch false'
       }
       junit '**/test-results.xml'
   }
 
   stage('Lint') {
-      sh 'ng lint'
+      sh 'npm run lint'
   }
 
   stage('Build') {
       milestone()
-      sh 'ng build --prod --aot --sm --progress=false'
+      sh 'npm run build --prod --aot --sm --progress=false'
   }
 
-  stage('Archive') {
-      sh 'tar -cvzf dist.tar.gz --strip-components=1 dist'
-      archive 'dist.tar.gz'
+  // stage('Archive') {
+  //     sh 'tar -cvzf dist.tar.gz --strip-components=1 dist'
+  //     archive 'dist.tar.gz'
+  // }
+
+  stage('Docker build') {
+    milestone()
+    // sh 'docker build -t curriculum .'
+    def image = docker.build("curriculum:${env.BUILD_ID}")
+    image.push()
+    image.push("latest")
   }
 
-  stage('Deploy') {
-      milestone()
-      echo "Deploying..."
-  }
+  // stage('Deploy') {
+  //     milestone()
+  //     echo "Deploying..."
+  //     docker.withRegistry('obyoxar', 'docker-private-credentials') {
+  //       app.push("${env.BUILD_NUMBER}")
+  //       app.push("latest")
+  //     }
+  // }
 }
