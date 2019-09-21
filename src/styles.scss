@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+@import './olib.scss';
+
+body, html{
+  @include reset-mbp;
+
+  background-color: #1C0231;
+
+  overflow: hidden;
+}
+
