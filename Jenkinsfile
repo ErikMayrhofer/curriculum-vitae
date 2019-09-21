@@ -16,12 +16,12 @@ node {
       }
   }
 
-  stage('Test') {
-      withEnv(["CHROME_BIN=/usr/bin/chromium-browser"]) {
-        sh 'npm run test --progress=false --watch false'
-      }
-      junit '**/test-results.xml'
-  }
+  // stage('Test') {
+  //     withEnv(["CHROME_BIN=/usr/bin/chromium-browser"]) {
+  //       sh 'npm run test --progress=false --watch false'
+  //     }
+  //     junit '**/test-results.xml'
+  // }
 
   stage('Lint') {
       sh 'npm run lint'
