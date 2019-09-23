@@ -1,5 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
-import * as ScrollMagic from 'scrollmagic';
+import ScrollMagic from 'scrollmagic/scrollmagic/uncompressed/ScrollMagic';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +9,15 @@ import * as ScrollMagic from 'scrollmagic';
 export class AppComponent implements AfterViewInit{
   title = 'Lebenslauf';
 
-  private ctrl = new ScrollMagic.Controller({addIndicators: true});
+  private ctrl = new ScrollMagic.Controller();
 
   ngAfterViewInit(): void {
     new ScrollMagic.Scene({
-      triggerElement: '.bigyeets',
-      // duration: 100,
-      // offset: 50
-    }).setPin('.bigyeets').addTo(this.ctrl);
+      triggerHook: 'onLeave',
+      triggerElement: '#name-badge',
+    })
+    .setPin('#name-badge')
+    .setClassToggle('#name-badge', 'full')
+    .addTo(this.ctrl);
   }
 }

@@ -54,7 +54,6 @@ $hero-size: 66vh;
   display: flex;
   align-content: center;
   justify-content: center;
-  transform: translateY(-50%);
   p{
     position: absolute;
     @include reset-mbp;
@@ -65,6 +64,11 @@ $hero-size: 66vh;
     background-color: white;
     font-family: sans-serif;
     font-size: 2em;
+  }
+  &.full{
+    p{
+      background-color: blue;
+    }
   }
 }
 
