@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import ScrollMagic from 'scrollmagic/scrollmagic/uncompressed/ScrollMagic';
 
 @Component({
@@ -7,7 +7,9 @@ import ScrollMagic from 'scrollmagic/scrollmagic/uncompressed/ScrollMagic';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements AfterViewInit{
-  title = 'Lebenslauf';
+
+  @ViewChild('content')
+  private content: ElementRef;
 
   private ctrl = new ScrollMagic.Controller();
 
@@ -19,5 +21,14 @@ export class AppComponent implements AfterViewInit{
     .setPin('#name-badge')
     .setClassToggle('#name-badge', 'full')
     .addTo(this.ctrl);
+  }
+
+  scrollToContent(): void {
+    this.scrollToElement(this.content);
+  }
+
+  scrollToElement(element: ElementRef): void {
+    console.log(element);
+    element.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
   }
 }

@@ -1,12 +1,12 @@
 <div class="img-container">
   <div class="img-mock"></div>
-  <div class="content">
+  <div class="content" #content>
     <div class="name-badge" id="name-badge">
-      <p>
+      <p (click)="scrollToContent()">
         Erik Mayrhofer
       </p>
     </div>
     <router-outlet></router-outlet>
-    <div class="placeholder"></div>
+    <div class="placeholder">aaaaa</div>
   </div>
 </div>
