@@ -49,7 +49,7 @@ $name-badge-height: 6rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center
+  align-items: stretch;
 }
 
 .name-badge-row {
@@ -59,22 +59,20 @@ $name-badge-height: 6rem;
   justify-content: center;
   justify-items: center;
   align-content: center;
-  width: 100%;
   top: 0px !important;
   height: $name-badge-height;
   .name-badge{
-    position: sticky;
+    position: relative;
     padding: 0em 10em;
     background-color: white;
     border-radius: 2em;
-    widows: auto;
     min-width: 0px;
-    transition: min-width 0.3s, all 1s;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
     align-items: center;
 
+    transition: min-width 0.3s, all 1s;
     p {
       padding: 0;
       margin: 0;
