@@ -1,4 +1,4 @@
-<div class="pageholder sidebar-open" (mouseenter)="sidebar = !sidebar" [class.sidebar-open]="sidebar">
+<div class="pageholder sidebar-open" (click)="sidebar = !sidebar" [class.sidebar-open]="sidebar">
   <div class="sidebar-holder">
     <div class="static">
       Static
@@ -8,12 +8,15 @@
       {{sidebar}}
       <p class="placeholder"></p>
     </div>
+    <div class="page-overlay"></div>
   </div>
   <div class="content-holder">
     <div class="static">
       Static
+
     </div>
     <div class="content">
+      <p class="tmp">Yeet</p>
       Content{{sidebar}}
       <p class="placeholder"></p>
     </div>
