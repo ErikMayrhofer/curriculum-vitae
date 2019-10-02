@@ -13,14 +13,17 @@ export class AppComponent implements AfterViewInit{
 
   private ctrl = new ScrollMagic.Controller();
 
+  sidebar = false;
+
   ngAfterViewInit(): void {
+    /*
     new ScrollMagic.Scene({
       triggerHook: 'onLeave',
       triggerElement: '#name-badge',
     })
     .setPin('#name-badge')
     .setClassToggle('#name-badge', 'full')
-    .addTo(this.ctrl);
+    .addTo(this.ctrl);*/
   }
 
   scrollToContent(): void {
@@ -30,5 +33,9 @@ export class AppComponent implements AfterViewInit{
   scrollToElement(element: ElementRef): void {
     console.log(element);
     element.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+  }
+
+  toggleClass(){
+
   }
 }

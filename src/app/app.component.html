@@ -1,28 +1,21 @@
-
-<div class="img-container">
-  <div class="img-mock"></div>
-
-
-  <div class="name-badge-container">
-    <div class="name-badge-row" id="name-badge">
-      <div class="name-badge" (click)="scrollToContent()">
-        <p>
-          Erik Mayrhofer
-        </p>
-      </div>
+<div class="pageholder sidebar-open" (mouseenter)="sidebar = !sidebar" [class.sidebar-open]="sidebar">
+  <div class="sidebar-holder">
+    <div class="static">
+      Static
     </div>
-
-    <div class="static-top-menu">
-      <div class="hamburger">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-      </div>
-      <button class="print">Print</button>
+    <div class="sidebar">
+      Sidebar
+      {{sidebar}}
+      <p class="placeholder"></p>
     </div>
   </div>
-  <div class="content-holder" #content>
-    <router-outlet></router-outlet>
-    <div class="placeholder">aaaaa</div>
+  <div class="content-holder">
+    <div class="static">
+      Static
+    </div>
+    <div class="content">
+      Content{{sidebar}}
+      <p class="placeholder"></p>
+    </div>
   </div>
 </div>
