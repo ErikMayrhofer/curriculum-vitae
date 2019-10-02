@@ -41,6 +41,7 @@ $hero-size: 66vh;
 }
 
 $name-badge-height: 6rem;
+$top-bar-height: $name-badge-height;
 .name-badge-container {
   width: 100%;
   margin: 0;
@@ -73,7 +74,7 @@ $name-badge-height: 6rem;
     // justify-content: center;
     align-items: center;
 
-    transition: min-width 0.3s, all 1s;
+    transition: min-width 0.3s ease-out, all 1s;
     p {
       padding: 0;
       margin: 0;
@@ -85,11 +86,12 @@ $name-badge-height: 6rem;
       transition: all 1s;
     }
   }
+
   &.full{
     .name-badge{
       // justify-content: left;
       min-width: 100%;
-      padding: 0em 1em;
+      padding: 0em 8em;
       border-radius: 0;
       p {
         min-width: 0;
@@ -106,4 +108,59 @@ $name-badge-height: 6rem;
   .content{
     z-index: 1;
   }
+}
+
+.static-top-menu {
+  position: fixed;
+  // background-color: #8822aa66;
+  height: $top-bar-height;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  .hamburger {
+
+    $ham-height: 2.25rem;
+    $ham-width: 4rem;
+    $line-height: 0.25rem;
+
+    width: $ham-width;
+    height: $ham-height;
+    margin: 1rem;
+    margin-left: 1.5rem;
+    margin-right: auto;
+
+
+    .line{
+
+      position: relative;
+
+      height: $line-height;
+      background-color: #333;
+      margin: 0;
+      margin-top: ($ham-height - 3 * $line-height)/2;
+      transition: 0.4s;
+      &:first-of-type{
+        margin-top: 0;
+      }
+    }
+  }
+  .print {
+    background-color: #00000066;
+    border: 1px solid #000000;
+    // border: none;
+    box-shadow: 0 0 3px 0 #000000;
+    font-size: 2rem;
+    margin-right: 1em;
+    border-radius: 2em;
+    padding: 0.2em 2em;
+    color: #ffffffaa;
+  }
+}
+
+.full {
+
 }
